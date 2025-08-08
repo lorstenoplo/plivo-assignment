@@ -86,20 +86,20 @@ export default function Dashboard() {
             </Card>
           </Link>
 
-          <Card className="hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105 border-2 hover:border-green-300 opacity-60">
-            <CardHeader>
-              <CardTitle className="text-muted-foreground flex items-center space-x-2">
-                <span>📄</span>
-                <span>Document Summarization</span>
-              </CardTitle>
-              <CardDescription>
-                Summarize PDFs, documents, and web content with AI precision
-                <span className="block mt-1 text-xs text-orange-500">
-                  Coming Soon
-                </span>
-              </CardDescription>
-            </CardHeader>
-          </Card>
+          <Link href="/document-summarization">
+            <Card className="hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105 border-2 hover:border-green-300">
+              <CardHeader>
+                <CardTitle className="text-primary flex items-center space-x-2">
+                  <span>📄</span>
+                  <span>Document Summarization</span>
+                </CardTitle>
+                <CardDescription>
+                  Summarize PDFs, documents, and web content with AI precision
+                  and comprehensive analysis
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </Link>
         </div>
       </div>
     </div>

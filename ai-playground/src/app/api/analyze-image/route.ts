@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
 
     const genAI = new GoogleGenerativeAI(geminiApiKey);
     // Using Gemini 2.5 Flash as requested (free tier)
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     // Prepare the image data for Gemini
     const imagePart = {
