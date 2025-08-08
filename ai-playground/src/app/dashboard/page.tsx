@@ -71,20 +71,20 @@ export default function Dashboard() {
             </Card>
           </Link>
 
-          <Card className="hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105 border-2 hover:border-purple-300 opacity-60">
-            <CardHeader>
-              <CardTitle className="text-muted-foreground flex items-center space-x-2">
-                <span>🖼️</span>
-                <span>Image Analysis</span>
-              </CardTitle>
-              <CardDescription>
-                Generate detailed descriptions and insights from your images
-                <span className="block mt-1 text-xs text-orange-500">
-                  Coming Soon
-                </span>
-              </CardDescription>
-            </CardHeader>
-          </Card>
+          <Link href="/image-analysis">
+            <Card className="hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105 border-2 hover:border-purple-300">
+              <CardHeader>
+                <CardTitle className="text-primary flex items-center space-x-2">
+                  <span>🖼️</span>
+                  <span>Image Analysis</span>
+                </CardTitle>
+                <CardDescription>
+                  Generate detailed descriptions and insights from your images
+                  with AI-powered visual analysis
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </Link>
 
           <Card className="hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105 border-2 hover:border-green-300 opacity-60">
             <CardHeader>
