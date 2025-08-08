@@ -100,6 +100,21 @@ export default function Dashboard() {
               </CardHeader>
             </Card>
           </Link>
+
+          <Link href="/history">
+            <Card className="hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105 border-2 hover:border-indigo-300">
+              <CardHeader>
+                <CardTitle className="text-primary flex items-center space-x-2">
+                  <span>🕒</span>
+                  <span>Content History</span>
+                </CardTitle>
+                <CardDescription>
+                  View and manage your past AI content generations and analysis
+                  results
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </Link>
         </div>
       </div>
     </div>

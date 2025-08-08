@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Users, Clock, MessageCircle, Loader2, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { ContentHistoryComponent } from "@/components/ContentHistory";
 
 interface Speaker {
   id: string;
@@ -330,6 +331,14 @@ export default function ConversationAnalysis() {
               </Card>
             </div>
           )}
+        </div>
+
+        {/* History Component */}
+        <div className="container mx-auto px-4 pb-8">
+          <ContentHistoryComponent
+            contentType="conversation"
+            className="max-w-4xl mx-auto"
+          />
         </div>
       </div>
     </div>

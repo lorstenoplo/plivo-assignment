@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import * as cheerio from "cheerio";
+import { ContentHistoryService } from "@/lib/content-history";
 
 interface DocumentSummaryResult {
   title: string;
@@ -223,7 +224,7 @@ Please provide a helpful analysis acknowledging the limitations while still givi
           } else {
             throw new Error("No JSON found in response");
           }
-        } catch (parseError) {
+        } catch {
           analysisResult = {
             title: `Analysis of ${url}`,
             summary:
@@ -331,8 +332,8 @@ Please ensure the JSON is valid and properly formatted.
       } else {
         throw new Error("No JSON found in response");
       }
-    } catch (parseError) {
-      console.error("Failed to parse Gemini response:", parseError);
+    } catch {
+      console.error("Failed to parse Gemini response");
 
       // Fallback: create a basic structure if JSON parsing fails
       const wordCount = extractedContent.split(" ").length;
@@ -360,6 +361,20 @@ Please ensure the JSON is valid and properly formatted.
         actionItems: [],
         fullText: extractedContent.substring(0, 2000),
       };
+    }
+
+    // Save to content history
+    try {
+      await ContentHistoryService.saveToHistory({
+        content_type: "url",
+        input_data: {
+          url: url,
+        },
+        output_data: JSON.stringify(analysisResult),
+      });
+    } catch (historyError) {
+      console.error("Failed to save to history:", historyError);
+      // Don't fail the main request if history saving fails
     }
 
     return NextResponse.json(analysisResult);

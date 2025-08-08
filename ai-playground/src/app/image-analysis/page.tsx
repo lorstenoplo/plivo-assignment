@@ -23,6 +23,7 @@ import {
   Check,
 } from "lucide-react";
 import Link from "next/link";
+import { ContentHistoryComponent } from "@/components/ContentHistory";
 
 interface ImageAnalysisResult {
   description: string;
@@ -512,6 +513,14 @@ export default function ImageAnalysis() {
               )}
             </div>
           )}
+        </div>
+
+        {/* History Component */}
+        <div className="container mx-auto px-4 pb-8">
+          <ContentHistoryComponent
+            contentType="image"
+            className="max-w-4xl mx-auto"
+          />
         </div>
       </div>
     </div>

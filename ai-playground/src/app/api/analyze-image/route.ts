@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { ContentHistoryService } from "@/lib/content-history";
 
 interface ImageAnalysisResult {
   description: string;
@@ -135,6 +136,20 @@ Please ensure the JSON is valid and properly formatted. Be descriptive but conci
         },
         tags: ["general", "image", "analysis"],
       };
+    }
+
+    // Save to content history
+    try {
+      await ContentHistoryService.saveToHistory({
+        content_type: "image",
+        input_data: {
+          prompt: "Image analysis",
+        },
+        output_data: JSON.stringify(analysisResult),
+      });
+    } catch (historyError) {
+      console.error("Failed to save to history:", historyError);
+      // Don't fail the main request if history saving fails
     }
 
     return NextResponse.json(analysisResult);

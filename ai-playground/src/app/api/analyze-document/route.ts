@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { ContentHistoryService } from "@/lib/content-history";
 
 interface DocumentSummaryResult {
   title: string;
@@ -151,6 +152,26 @@ Please ensure the JSON is valid and properly formatted.
         actionItems: [],
         fullText: text.substring(0, 2000),
       };
+    }
+
+    // Save to content history
+    try {
+      await ContentHistoryService.saveToHistory({
+        content_type: "document",
+        input_data: {
+          prompt: "Document analysis",
+        },
+        output_data: JSON.stringify(analysisResult),
+        file_info: fileName
+          ? {
+              name: fileName,
+              type: mimeType || "application/octet-stream",
+            }
+          : undefined,
+      });
+    } catch (historyError) {
+      console.error("Failed to save to history:", historyError);
+      // Don't fail the main request if history saving fails
     }
 
     return NextResponse.json(analysisResult);

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { ContentHistoryService } from "@/lib/content-history";
 
 interface Speaker {
   id: string;
@@ -125,6 +126,20 @@ Please ensure the JSON is valid and properly formatted. If there's only one spea
         sentiment: "Neutral",
         duration: 60,
       };
+    }
+
+    // Save to content history
+    try {
+      await ContentHistoryService.saveToHistory({
+        content_type: "conversation",
+        input_data: {
+          prompt: "Audio conversation analysis",
+        },
+        output_data: JSON.stringify(analysisResult),
+      });
+    } catch (historyError) {
+      console.error("Failed to save to history:", historyError);
+      // Don't fail the main request if history saving fails
     }
 
     return NextResponse.json(analysisResult);
