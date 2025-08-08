@@ -11,6 +11,8 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 
+import Link from "next/link";
+
 export default function Dashboard() {
   const { user, loading, signOut } = useAuth();
   const router = useRouter();
@@ -54,34 +56,47 @@ export default function Dashboard() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+          <Link href="/conversation-analysis">
+            <Card className="hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105 border-2 hover:border-blue-300">
+              <CardHeader>
+                <CardTitle className="text-primary flex items-center space-x-2">
+                  <span>🎙️</span>
+                  <span>Conversation Analysis</span>
+                </CardTitle>
+                <CardDescription>
+                  Upload audio files for speech-to-text conversion and speaker
+                  diarization with AI-powered insights
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </Link>
+
+          <Card className="hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105 border-2 hover:border-purple-300 opacity-60">
             <CardHeader>
-              <CardTitle className="text-primary">
-                🎙️ Conversation Analysis
+              <CardTitle className="text-muted-foreground flex items-center space-x-2">
+                <span>🖼️</span>
+                <span>Image Analysis</span>
               </CardTitle>
               <CardDescription>
-                Upload audio files for speech-to-text conversion and speaker
-                diarization
-              </CardDescription>
-            </CardHeader>
-          </Card>
-
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer">
-            <CardHeader>
-              <CardTitle className="text-primary">🖼️ Image Analysis</CardTitle>
-              <CardDescription>
                 Generate detailed descriptions and insights from your images
+                <span className="block mt-1 text-xs text-orange-500">
+                  Coming Soon
+                </span>
               </CardDescription>
             </CardHeader>
           </Card>
 
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+          <Card className="hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105 border-2 hover:border-green-300 opacity-60">
             <CardHeader>
-              <CardTitle className="text-primary">
-                📄 Document Summarization
+              <CardTitle className="text-muted-foreground flex items-center space-x-2">
+                <span>📄</span>
+                <span>Document Summarization</span>
               </CardTitle>
               <CardDescription>
                 Summarize PDFs, documents, and web content with AI precision
+                <span className="block mt-1 text-xs text-orange-500">
+                  Coming Soon
+                </span>
               </CardDescription>
             </CardHeader>
           </Card>
