@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Playground
+
+A multi-modal AI-powered application for conversation analysis, image analysis, and document summarization.
+
+## Features
+
+- 🎙️ **Conversation Analysis**: Upload audio files for speech-to-text conversion and speaker diarization
+- 🖼️ **Image Analysis**: Generate detailed descriptions and insights from images
+- 📄 **Document Summarization**: Summarize PDFs, documents, and web content
+
+## Tech Stack
+
+- **Frontend**: Next.js 15, React, TypeScript
+- **Styling**: Tailwind CSS, Shadcn UI
+- **Authentication**: NextAuth.js v5
+- **Deployment**: Vercel-ready
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone <repository-url>
+   cd ai-playground
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   Copy `.env.local` and update the values:
+
+   ```env
+   NEXTAUTH_SECRET=your-super-secret-jwt-key-here
+   NEXTAUTH_URL=http://localhost:3000
+   ```
+
+4. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Authentication
+
+For demo purposes, use these credentials:
+
+- **Email**: demo@example.com
+- **Password**: password
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── auth/signin/         # Authentication pages
+│   ├── dashboard/           # Main dashboard
+│   ├── api/auth/           # NextAuth API routes
+│   ├── globals.css         # Global styles with custom theme
+│   ├── layout.tsx          # Root layout
+│   └── page.tsx            # Landing page
+├── components/
+│   ├── ui/                 # Shadcn UI components
+│   └── providers.tsx       # Session provider wrapper
+├── lib/
+│   └── utils.ts           # Utility functions
+└── auth.ts                # NextAuth configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deployment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project is optimized for Vercel deployment:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Add environment variables in Vercel dashboard
+4. Deploy!
 
-## Learn More
+## Cool Theme Features
 
-To learn more about Next.js, take a look at the following resources:
+- Custom blue/purple/cyan color scheme
+- Dark mode support
+- Gradient backgrounds and text
+- Smooth animations and transitions
+- Glassmorphism effects
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Development Notes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Built with AI-first development using GitHub Copilot
+- Clean architecture with proper separation of concerns
+- TypeScript for type safety
+- ESLint for code quality
+- Responsive design principles
 
-## Deploy on Vercel
+## Next Steps
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The foundation is now ready for implementing the core AI features:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Audio processing and diarization
+- Image analysis with AI models
+- Document processing and summarization
+- User history and session management
