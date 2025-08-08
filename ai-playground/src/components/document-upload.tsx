@@ -301,7 +301,7 @@ export function DocumentUpload({
 
                   {/* Processing overlay */}
                   {isProcessing && (
-                    <div className="absolute inset-0 bg-black/10 rounded-lg flex items-center justify-center">
+                    <div className="absolute inset-0 rounded-lg flex items-center justify-center">
                       <div className="bg-white/90 px-4 py-2 rounded-lg shadow-lg">
                         <div className="flex items-center space-x-2">
                           <div className="w-4 h-4 border-2 border-green-600 border-t-transparent rounded-full animate-spin"></div>
